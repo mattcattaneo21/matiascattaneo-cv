@@ -88,7 +88,6 @@
       background: var(--accent);
       position: relative;
       overflow: hidden;
-      /* initials fallback, shown when the photo is absent / fails to load */
       display: grid;
       place-items: center;
       color: #fff;
@@ -122,39 +121,127 @@
     main.content { padding: 28px 32px; }
     .content section + section { margin-top: 34px; }
 
-    h2.block-title {
+    /* ---------- Section toggle ---------- */
+    details.section-toggle > summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-size: 0.78rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.2px;
       color: var(--accent);
-      margin-bottom: 14px;
       padding-bottom: 6px;
       border-bottom: 2px solid var(--accent-soft);
     }
+    details.section-toggle > summary::-webkit-details-marker { display: none; }
+    details.section-toggle > summary::after {
+      content: "›";
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      transition: transform 0.15s;
+    }
+    details.section-toggle[open] > summary::after {
+      transform: rotate(90deg);
+    }
+    details.section-toggle > summary + * { margin-top: 14px; }
 
-    /* Experience */
-    .job { margin-bottom: 22px; }
-    .job:last-child { margin-bottom: 0; }
-    .job h3 { font-size: 1rem; color: var(--ink); }
-    .job .meta { font-size: 0.8rem; color: var(--ink-soft); margin: 2px 0 8px; }
-    .job .sub { font-size: 0.92rem; font-weight: 600; color: var(--ink); margin-top: 12px; }
-    .job ul { margin: 8px 0 8px 18px; }
+    /* ---------- Job toggle ---------- */
+    details.job { margin-bottom: 22px; }
+    details.job:last-child { margin-bottom: 0; }
+    details.job > summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      display: block;
+      border-radius: 5px;
+      margin: -3px -6px;
+      padding: 3px 6px;
+      transition: background 0.12s;
+    }
+    details.job > summary::-webkit-details-marker { display: none; }
+    details.job > summary:hover { background: var(--accent-soft); }
+    details.job > summary h3 {
+      font-size: 1rem;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    details.job > summary h3::after {
+      content: "›";
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+    details.job[open] > summary h3::after {
+      transform: rotate(90deg);
+    }
+    .job-meta { font-size: 0.8rem; color: var(--ink-soft); margin: 2px 0 0; }
+    .job ul { margin: 10px 0 8px 18px; }
     .job li { font-size: 0.88rem; margin-bottom: 4px; }
     .tags { font-size: 0.78rem; color: var(--ink-soft); margin-top: 6px; }
     .tags b { color: var(--ink); font-weight: 600; }
     .nested { padding-left: 14px; border-left: 2px solid var(--accent-soft); margin-top: 12px; }
 
-    /* Education */
+    /* ---------- Nested job toggle ---------- */
+    details.nested-job + details.nested-job { margin-top: 12px; }
+    details.nested-job > summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      display: block;
+      border-radius: 4px;
+      margin: -2px -4px;
+      padding: 2px 4px;
+      transition: background 0.12s;
+    }
+    details.nested-job > summary::-webkit-details-marker { display: none; }
+    details.nested-job > summary:hover { background: var(--accent-soft); }
+    .nested-sub {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .nested-sub::after {
+      content: "›";
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+    details.nested-job[open] > summary .nested-sub::after {
+      transform: rotate(90deg);
+    }
+    .nested-meta { font-size: 0.8rem; color: var(--ink-soft); margin: 1px 0 0; }
+    details.nested-job ul { margin: 8px 0 8px 18px; }
+    details.nested-job li { font-size: 0.88rem; margin-bottom: 4px; }
+
+    /* ---------- Education ---------- */
     .edu-item { margin-bottom: 16px; }
+    .edu-item:last-child { margin-bottom: 0; }
     .edu-item h3 { font-size: 0.95rem; }
     .edu-item .meta { font-size: 0.8rem; color: var(--ink-soft); }
     .edu-item .note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 3px; }
 
-    /* Certifications */
+    /* ---------- Certifications ---------- */
     .cert-line { font-size: 0.88rem; color: var(--ink-soft); }
     .cert-line b { color: var(--ink); font-weight: 600; }
 
-    /* Skills */
+    /* ---------- Skills ---------- */
     .skills-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -163,7 +250,7 @@
     .skill-group .label { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
     .skill-group .val { font-size: 0.82rem; color: var(--ink-soft); }
 
-    /* Languages */
+    /* ---------- Languages ---------- */
     .lang-line { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 6px; }
     .lang-line b { color: var(--ink); font-weight: 600; }
 
@@ -205,157 +292,188 @@
 
     <!-- Main content -->
     <main class="content">
+
       <!-- Experience -->
       <section>
-        <h2 class="block-title" data-en="Professional Experience" data-es="Experiencia Profesional">Professional Experience</h2>
+        <details class="section-toggle" open>
+          <summary data-en="Professional Experience" data-es="Experiencia Profesional">Professional Experience</summary>
 
-        <div class="job">
-          <h3>Data Engineer | IAgro</h3>
-          <p class="meta" data-en="September 2025 - Present" data-es="Septiembre 2025 - Actualidad">September 2025 - Present</p>
-          <ul>
-            <li data-en="Build and maintain Snowflake data pipelines for agriculture clients." data-es="Construyo y mantengo pipelines de datos en Snowflake para clientes del agro.">Build and maintain Snowflake data pipelines for agriculture clients.</li>
-            <li data-en="Develop dbt models that turn raw data into clean, documented datasets." data-es="Desarrollo modelos en dbt que convierten datos crudos en datasets limpios y documentados.">Develop dbt models that turn raw data into clean, documented datasets.</li>
-            <li data-en="Automate data ingestion from client systems into Snowflake with Fivetran." data-es="Automatizo la ingesta de datos de los sistemas de clientes hacia Snowflake con Fivetran.">Automate data ingestion from client systems into Snowflake with Fivetran.</li>
-            <li data-en="Build dashboards in Power BI and Looker Studio to track farm production KPIs." data-es="Armo dashboards en Power BI y Looker Studio para seguir KPIs de producción agrícola.">Build dashboards in Power BI and Looker Studio to track farm production KPIs.</li>
-            <li data-en="Built AI assistants on Snowflake that let users ask questions about their data in plain language." data-es="Construí asistentes de IA sobre Snowflake para consultar datos en lenguaje natural.">Built AI assistants on Snowflake that let users ask questions about their data in plain language.</li>
-            <li data-en="Standardize reference data across clients so reports stay consistent." data-es="Estandarizo datos de referencia entre clientes para que los reportes sean consistentes.">Standardize reference data across clients so reports stay consistent.</li>
-            <li data-en="Manage Snowflake roles, access, and warehouse costs." data-es="Administro roles, accesos y costos de warehouse en Snowflake.">Manage Snowflake roles, access, and warehouse costs.</li>
-            <li data-en="Support multiple clients end to end: data quality, KPIs, and troubleshooting." data-es="Doy soporte integral a varios clientes: calidad de datos, KPIs y resolución de problemas.">Support multiple clients end to end: data quality, KPIs, and troubleshooting.</li>
-          </ul>
-          <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Snowflake, dbt, Fivetran, Power BI, Looker Studio · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Agriculture" data-es="Agro">Agriculture</span></p>
-        </div>
-
-        <div class="job">
-          <h3 data-en="Data &amp; Analytics Consultant | Inisoft" data-es="Consultor de Datos &amp; Analytics | Inisoft">Data &amp; Analytics Consultant | Inisoft</h3>
-          <p class="meta" data-en="September 2023 - August 2025" data-es="Septiembre 2023 - Agosto 2025">September 2023 - August 2025</p>
-
-          <div class="nested">
-            <p class="sub" data-en="Client Assignment: Analytics Engineer | Hakkoda" data-es="Asignación a Cliente: Analytics Engineer | Hakkoda">Client Assignment: Analytics Engineer | Hakkoda</p>
-            <p class="meta" data-en="January 2025 - August 2025" data-es="Enero 2025 - Agosto 2025">January 2025 - August 2025</p>
+          <details class="job" open>
+            <summary>
+              <h3>Data Engineer | IAgro</h3>
+              <div class="job-meta" data-en="September 2025 - Present" data-es="Septiembre 2025 - Actualidad">September 2025 - Present</div>
+            </summary>
             <ul>
-              <li data-en="Built dbt data pipelines for repeatable ELT processes." data-es="Construí pipelines de datos con dbt para procesos ELT repetibles.">Built dbt data pipelines for repeatable ELT processes.</li>
-              <li data-en="Created Tableau dashboards for business analysis." data-es="Creé dashboards en Tableau para análisis de negocio.">Created Tableau dashboards for business analysis.</li>
-              <li data-en="Validated data with SQL in Snowflake." data-es="Validé datos con SQL en Snowflake.">Validated data with SQL in Snowflake.</li>
-              <li data-en="Worked with business, IT, and Governance teams to turn analytics needs into data assets." data-es="Trabajé con equipos de negocio, IT y Gobierno de Datos para convertir necesidades de analytics en activos de datos.">Worked with business, IT, and Governance teams to turn analytics needs into data assets.</li>
+              <li data-en="Build and maintain Snowflake data pipelines for agriculture clients." data-es="Construyo y mantengo pipelines de datos en Snowflake para clientes del agro.">Build and maintain Snowflake data pipelines for agriculture clients.</li>
+              <li data-en="Develop dbt models that turn raw data into clean, documented datasets." data-es="Desarrollo modelos en dbt que convierten datos crudos en datasets limpios y documentados.">Develop dbt models that turn raw data into clean, documented datasets.</li>
+              <li data-en="Automate data ingestion from client systems into Snowflake with Fivetran." data-es="Automatizo la ingesta de datos de los sistemas de clientes hacia Snowflake con Fivetran.">Automate data ingestion from client systems into Snowflake with Fivetran.</li>
+              <li data-en="Build dashboards in Power BI and Looker Studio to track farm production KPIs." data-es="Armo dashboards en Power BI y Looker Studio para seguir KPIs de producción agrícola.">Build dashboards in Power BI and Looker Studio to track farm production KPIs.</li>
+              <li data-en="Built AI assistants on Snowflake that let users ask questions about their data in plain language." data-es="Construí asistentes de IA sobre Snowflake para consultar datos en lenguaje natural.">Built AI assistants on Snowflake that let users ask questions about their data in plain language.</li>
+              <li data-en="Standardize reference data across clients so reports stay consistent." data-es="Estandarizo datos de referencia entre clientes para que los reportes sean consistentes.">Standardize reference data across clients so reports stay consistent.</li>
+              <li data-en="Manage Snowflake roles, access, and warehouse costs." data-es="Administro roles, accesos y costos de warehouse en Snowflake.">Manage Snowflake roles, access, and warehouse costs.</li>
+              <li data-en="Support multiple clients end to end: data quality, KPIs, and troubleshooting." data-es="Doy soporte integral a varios clientes: calidad de datos, KPIs y resolución de problemas.">Support multiple clients end to end: data quality, KPIs, and troubleshooting.</li>
             </ul>
-            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Tableau, dbt, SQL, Snowflake, Git, Bitbucket · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Retail - Food Distribution (US Foods)" data-es="Retail - Distribución de Alimentos (US Foods)">Retail - Food Distribution (US Foods)</span></p>
+            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Snowflake, dbt, Fivetran, Power BI, Looker Studio · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Agriculture" data-es="Agro">Agriculture</span></p>
+          </details>
 
-            <p class="sub" data-en="Client Assignment: Business Analyst | Speedcast" data-es="Asignación a Cliente: Business Analyst | Speedcast">Client Assignment: Business Analyst | Speedcast</p>
-            <p class="meta" data-en="January 2024 - January 2025" data-es="Enero 2024 - Enero 2025">January 2024 - January 2025</p>
+          <details class="job" open>
+            <summary>
+              <h3 data-en="Data &amp; Analytics Consultant | Inisoft" data-es="Consultor de Datos &amp; Analytics | Inisoft">Data &amp; Analytics Consultant | Inisoft</h3>
+              <div class="job-meta" data-en="September 2023 - August 2025" data-es="Septiembre 2023 - Agosto 2025">September 2023 - August 2025</div>
+            </summary>
+            <div class="nested">
+              <details class="nested-job" open>
+                <summary>
+                  <div class="nested-sub" data-en="Client Assignment: Analytics Engineer | Hakkoda" data-es="Asignación a Cliente: Analytics Engineer | Hakkoda">Client Assignment: Analytics Engineer | Hakkoda</div>
+                  <div class="nested-meta" data-en="January 2025 - August 2025" data-es="Enero 2025 - Agosto 2025">January 2025 - August 2025</div>
+                </summary>
+                <ul>
+                  <li data-en="Built dbt data pipelines for repeatable ELT processes." data-es="Construí pipelines de datos con dbt para procesos ELT repetibles.">Built dbt data pipelines for repeatable ELT processes.</li>
+                  <li data-en="Created Tableau dashboards for business analysis." data-es="Creé dashboards en Tableau para análisis de negocio.">Created Tableau dashboards for business analysis.</li>
+                  <li data-en="Validated data with SQL in Snowflake." data-es="Validé datos con SQL en Snowflake.">Validated data with SQL in Snowflake.</li>
+                  <li data-en="Worked with business, IT, and Governance teams to turn analytics needs into data assets." data-es="Trabajé con equipos de negocio, IT y Gobierno de Datos para convertir necesidades de analytics en activos de datos.">Worked with business, IT, and Governance teams to turn analytics needs into data assets.</li>
+                </ul>
+                <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Tableau, dbt, SQL, Snowflake, Git, Bitbucket · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Retail - Food Distribution (US Foods)" data-es="Retail - Distribución de Alimentos (US Foods)">Retail - Food Distribution (US Foods)</span></p>
+              </details>
+
+              <details class="nested-job" open>
+                <summary>
+                  <div class="nested-sub" data-en="Client Assignment: Business Analyst | Speedcast" data-es="Asignación a Cliente: Business Analyst | Speedcast">Client Assignment: Business Analyst | Speedcast</div>
+                  <div class="nested-meta" data-en="January 2024 - January 2025" data-es="Enero 2024 - Enero 2025">January 2024 - January 2025</div>
+                </summary>
+                <ul>
+                  <li data-en="Improved customer and product data processes, identifying automation opportunities." data-es="Mejoré procesos de datos de clientes y productos, identificando oportunidades de automatización.">Improved customer and product data processes, identifying automation opportunities.</li>
+                  <li data-en="Compared MDM tools (IBM InfoSphere, Microsoft Purview, Profisee) to support a tool recommendation." data-es="Comparé herramientas de MDM (IBM InfoSphere, Microsoft Purview, Profisee) para recomendar una.">Compared MDM tools (IBM InfoSphere, Microsoft Purview, Profisee) to support a tool recommendation.</li>
+                  <li data-en="Mapped the new customer account setup process to clarify roles and steps." data-es="Mapeé el proceso de alta de nuevas cuentas de clientes para clarificar roles y pasos.">Mapped the new customer account setup process to clarify roles and steps.</li>
+                  <li data-en="Helped integrate Dynamics 365 CRM and ServiceNow to speed up order creation." data-es="Ayudé a integrar Dynamics 365 CRM y ServiceNow para agilizar la creación de órdenes.">Helped integrate Dynamics 365 CRM and ServiceNow to speed up order creation.</li>
+                </ul>
+                <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, Microsoft Purview, Azure DevOps, Miro, Dynamics 365 · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Telecommunications" data-es="Telecomunicaciones">Telecommunications</span></p>
+              </details>
+
+              <details class="nested-job" open>
+                <summary>
+                  <div class="nested-sub" data-en="Client Assignment: Data Governance Analyst | Hakkoda" data-es="Asignación a Cliente: Data Governance Analyst | Hakkoda">Client Assignment: Data Governance Analyst | Hakkoda</div>
+                  <div class="nested-meta" data-en="September 2023 - January 2024" data-es="Septiembre 2023 - Enero 2024">September 2023 - January 2024</div>
+                </summary>
+                <ul>
+                  <li data-en="Introduced data governance concepts to business and IT teams." data-es="Introduje conceptos de gobierno de datos a equipos de negocio e IT.">Introduced data governance concepts to business and IT teams.</li>
+                  <li data-en="Reviewed data policies and proposed improvements." data-es="Revisé políticas de datos y propuse mejoras.">Reviewed data policies and proposed improvements.</li>
+                  <li data-en="Validated report metrics during the migration of legacy reports to Snowflake, Tableau, and Sigma." data-es="Validé métricas de reportes durante la migración de reportes legados a Snowflake, Tableau y Sigma.">Validated report metrics during the migration of legacy reports to Snowflake, Tableau, and Sigma.</li>
+                </ul>
+                <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> SQL, Snowflake, Alation · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Retail - Food Distribution (US Foods)" data-es="Retail - Distribución de Alimentos (US Foods)">Retail - Food Distribution (US Foods)</span></p>
+              </details>
+            </div>
+          </details>
+
+          <details class="job" open>
+            <summary>
+              <h3 data-en="Data Governance Analyst | Banco de Cordoba" data-es="Data Governance Analyst | Banco de Córdoba">Data Governance Analyst | Banco de Cordoba</h3>
+              <div class="job-meta" data-en="August 2022 - August 2023" data-es="Agosto 2022 - Agosto 2023">August 2022 - August 2023</div>
+            </summary>
             <ul>
-              <li data-en="Improved customer and product data processes, identifying automation opportunities." data-es="Mejoré procesos de datos de clientes y productos, identificando oportunidades de automatización.">Improved customer and product data processes, identifying automation opportunities.</li>
-              <li data-en="Compared MDM tools (IBM InfoSphere, Microsoft Purview, Profisee) to support a tool recommendation." data-es="Comparé herramientas de MDM (IBM InfoSphere, Microsoft Purview, Profisee) para recomendar una.">Compared MDM tools (IBM InfoSphere, Microsoft Purview, Profisee) to support a tool recommendation.</li>
-              <li data-en="Mapped the new customer account setup process to clarify roles and steps." data-es="Mapeé el proceso de alta de nuevas cuentas de clientes para clarificar roles y pasos.">Mapped the new customer account setup process to clarify roles and steps.</li>
-              <li data-en="Helped integrate Dynamics 365 CRM and ServiceNow to speed up order creation." data-es="Ayudé a integrar Dynamics 365 CRM y ServiceNow para agilizar la creación de órdenes.">Helped integrate Dynamics 365 CRM and ServiceNow to speed up order creation.</li>
+              <li data-en="Managed data assets to keep Power BI reports accurate and available." data-es="Gestioné activos de datos para mantener reportes de Power BI precisos y disponibles.">Managed data assets to keep Power BI reports accurate and available.</li>
+              <li data-en="Wrote SQL to model credit card data for the Risk Prevention area." data-es="Escribí SQL para modelar datos de tarjetas de crédito para Prevención de Riesgos.">Wrote SQL to model credit card data for the Risk Prevention area.</li>
+              <li data-en="Ensured data consistency between the payment processor (Prisma) and the core system." data-es="Aseguré la consistencia de datos entre el procesador de pagos (Prisma) y el sistema core.">Ensured data consistency between the payment processor (Prisma) and the core system.</li>
+              <li data-en="Helped internal teams adopt new data tools and processes." data-es="Ayudé a equipos internos a adoptar nuevas herramientas y procesos de datos.">Helped internal teams adopt new data tools and processes.</li>
+              <li data-en="Profiled data assets with Python." data-es="Perfilé activos de datos con Python.">Profiled data assets with Python.</li>
             </ul>
-            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, Microsoft Purview, Azure DevOps, Miro, Dynamics 365 · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Telecommunications" data-es="Telecomunicaciones">Telecommunications</span></p>
+            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, Microsoft SQL Server, Python, Oracle Database · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Finance" data-es="Finanzas">Finance</span></p>
+          </details>
 
-            <p class="sub" data-en="Client Assignment: Data Governance Analyst | Hakkoda" data-es="Asignación a Cliente: Data Governance Analyst | Hakkoda">Client Assignment: Data Governance Analyst | Hakkoda</p>
-            <p class="meta" data-en="September 2023 - January 2024" data-es="Septiembre 2023 - Enero 2024">September 2023 - January 2024</p>
+          <details class="job" open>
+            <summary>
+              <h3 data-en="Data Analyst (BI) | Plasticos Dise" data-es="Analista de Datos (BI) | Plásticos Dise">Data Analyst (BI) | Plasticos Dise</h3>
+              <div class="job-meta" data-en="August 2020 - July 2022" data-es="Agosto 2020 - Julio 2022">August 2020 - July 2022</div>
+            </summary>
             <ul>
-              <li data-en="Introduced data governance concepts to business and IT teams." data-es="Introduje conceptos de gobierno de datos a equipos de negocio e IT.">Introduced data governance concepts to business and IT teams.</li>
-              <li data-en="Reviewed data policies and proposed improvements." data-es="Revisé políticas de datos y propuse mejoras.">Reviewed data policies and proposed improvements.</li>
-              <li data-en="Validated report metrics during the migration of legacy reports to Snowflake, Tableau, and Sigma." data-es="Validé métricas de reportes durante la migración de reportes legados a Snowflake, Tableau y Sigma.">Validated report metrics during the migration of legacy reports to Snowflake, Tableau, and Sigma.</li>
+              <li data-en="Digitalized data collection with Google Forms, improving accuracy and access." data-es="Digitalicé la recolección de datos con Google Forms, mejorando precisión y acceso.">Digitalized data collection with Google Forms, improving accuracy and access.</li>
+              <li data-en="Built productivity reports and dashboards with OEE and OKR indicators." data-es="Armé reportes de productividad y dashboards con indicadores OEE y OKR.">Built productivity reports and dashboards with OEE and OKR indicators.</li>
+              <li data-en="Measured on-time delivery (OTD) and proposed improvements." data-es="Medí la entrega a tiempo (OTD) y propuse mejoras.">Measured on-time delivery (OTD) and proposed improvements.</li>
+              <li data-en="Managed inventory control and planning with SAP." data-es="Gestioné el control y planificación de inventario con SAP.">Managed inventory control and planning with SAP.</li>
             </ul>
-            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> SQL, Snowflake, Alation · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Retail - Food Distribution (US Foods)" data-es="Retail - Distribución de Alimentos (US Foods)">Retail - Food Distribution (US Foods)</span></p>
-          </div>
-        </div>
+            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, SAP · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Manufacturing" data-es="Manufactura">Manufacturing</span></p>
+          </details>
 
-        <div class="job">
-          <h3 data-en="Data Governance Analyst | Banco de Cordoba" data-es="Data Governance Analyst | Banco de Córdoba">Data Governance Analyst | Banco de Cordoba</h3>
-          <p class="meta" data-en="August 2022 - August 2023" data-es="Agosto 2022 - Agosto 2023">August 2022 - August 2023</p>
-          <ul>
-            <li data-en="Managed data assets to keep Power BI reports accurate and available." data-es="Gestioné activos de datos para mantener reportes de Power BI precisos y disponibles.">Managed data assets to keep Power BI reports accurate and available.</li>
-            <li data-en="Wrote SQL to model credit card data for the Risk Prevention area." data-es="Escribí SQL para modelar datos de tarjetas de crédito para Prevención de Riesgos.">Wrote SQL to model credit card data for the Risk Prevention area.</li>
-            <li data-en="Ensured data consistency between the payment processor (Prisma) and the core system." data-es="Aseguré la consistencia de datos entre el procesador de pagos (Prisma) y el sistema core.">Ensured data consistency between the payment processor (Prisma) and the core system.</li>
-            <li data-en="Helped internal teams adopt new data tools and processes." data-es="Ayudé a equipos internos a adoptar nuevas herramientas y procesos de datos.">Helped internal teams adopt new data tools and processes.</li>
-            <li data-en="Profiled data assets with Python." data-es="Perfilé activos de datos con Python.">Profiled data assets with Python.</li>
-          </ul>
-          <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, Microsoft SQL Server, Python, Oracle Database · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Finance" data-es="Finanzas">Finance</span></p>
-        </div>
-
-        <div class="job">
-          <h3 data-en="Data Analyst (BI) | Plasticos Dise" data-es="Analista de Datos (BI) | Plásticos Dise">Data Analyst (BI) | Plasticos Dise</h3>
-          <p class="meta" data-en="August 2020 - July 2022" data-es="Agosto 2020 - Julio 2022">August 2020 - July 2022</p>
-          <ul>
-            <li data-en="Digitalized data collection with Google Forms, improving accuracy and access." data-es="Digitalicé la recolección de datos con Google Forms, mejorando precisión y acceso.">Digitalized data collection with Google Forms, improving accuracy and access.</li>
-            <li data-en="Built productivity reports and dashboards with OEE and OKR indicators." data-es="Armé reportes de productividad y dashboards con indicadores OEE y OKR.">Built productivity reports and dashboards with OEE and OKR indicators.</li>
-            <li data-en="Measured on-time delivery (OTD) and proposed improvements." data-es="Medí la entrega a tiempo (OTD) y propuse mejoras.">Measured on-time delivery (OTD) and proposed improvements.</li>
-            <li data-en="Managed inventory control and planning with SAP." data-es="Gestioné el control y planificación de inventario con SAP.">Managed inventory control and planning with SAP.</li>
-          </ul>
-          <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, SAP · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Manufacturing" data-es="Manufactura">Manufacturing</span></p>
-        </div>
-
-        <div class="job">
-          <h3 data-en="Process Engineering Intern | Plasticos Dise" data-es="Pasante de Ingeniería de Procesos | Plásticos Dise">Process Engineering Intern | Plasticos Dise</h3>
-          <p class="meta" data-en="February 2019 - July 2020" data-es="Febrero 2019 - Julio 2020">February 2019 - July 2020</p>
-          <ul>
-            <li data-en="Standardized production data to improve process efficiency." data-es="Estandaricé datos de producción para mejorar la eficiencia de los procesos.">Standardized production data to improve process efficiency.</li>
-            <li data-en="Reduced machine setup times with the SMED method." data-es="Reduje tiempos de setup de máquinas con el método SMED.">Reduced machine setup times with the SMED method.</li>
-            <li data-en="Created training guides to standardize operations." data-es="Creé guías de capacitación para estandarizar la operación.">Created training guides to standardize operations.</li>
-            <li data-en="Mapped processes (VSM) to find and remove inefficiencies." data-es="Mapeé procesos (VSM) para encontrar y eliminar ineficiencias.">Mapped processes (VSM) to find and remove inefficiencies.</li>
-          </ul>
-          <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Microsoft Office, Poka · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Manufacturing" data-es="Manufactura">Manufacturing</span></p>
-        </div>
+          <details class="job" open>
+            <summary>
+              <h3 data-en="Process Engineering Intern | Plasticos Dise" data-es="Pasante de Ingeniería de Procesos | Plásticos Dise">Process Engineering Intern | Plasticos Dise</h3>
+              <div class="job-meta" data-en="February 2019 - July 2020" data-es="Febrero 2019 - Julio 2020">February 2019 - July 2020</div>
+            </summary>
+            <ul>
+              <li data-en="Standardized production data to improve process efficiency." data-es="Estandaricé datos de producción para mejorar la eficiencia de los procesos.">Standardized production data to improve process efficiency.</li>
+              <li data-en="Reduced machine setup times with the SMED method." data-es="Reduje tiempos de setup de máquinas con el método SMED.">Reduced machine setup times with the SMED method.</li>
+              <li data-en="Created training guides to standardize operations." data-es="Creé guías de capacitación para estandarizar la operación.">Created training guides to standardize operations.</li>
+              <li data-en="Mapped processes (VSM) to find and remove inefficiencies." data-es="Mapeé procesos (VSM) para encontrar y eliminar ineficiencias.">Mapped processes (VSM) to find and remove inefficiencies.</li>
+            </ul>
+            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Microsoft Office, Poka · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Manufacturing" data-es="Manufactura">Manufacturing</span></p>
+          </details>
+        </details>
       </section>
 
       <!-- Education -->
       <section>
-        <h2 class="block-title" data-en="Education" data-es="Educación">Education</h2>
+        <details class="section-toggle" open>
+          <summary data-en="Education" data-es="Educación">Education</summary>
 
-        <div class="edu-item">
-          <h3 data-en="Industrial Engineering Degree" data-es="Ingeniería Industrial">Industrial Engineering Degree</h3>
-          <p class="meta">Universidad Tecnológica Nacional - Facultad Regional Córdoba · <span data-en="March 2014 - February 2021" data-es="Marzo 2014 - Febrero 2021">March 2014 - February 2021</span></p>
-          <p class="note"><b data-en="Final Project:" data-es="Proyecto Final:">Final Project:</b> <span data-en="Introduction to business intelligence and proposals for improvement in a plastic packaging factory." data-es="Introducción al business intelligence y propuestas de mejora en una fábrica de envases plásticos.">Introduction to business intelligence and proposals for improvement in a plastic packaging factory.</span></p>
-        </div>
+          <div class="edu-item">
+            <h3 data-en="Industrial Engineering Degree" data-es="Ingeniería Industrial">Industrial Engineering Degree</h3>
+            <p class="meta">Universidad Tecnológica Nacional - Facultad Regional Córdoba · <span data-en="March 2014 - February 2021" data-es="Marzo 2014 - Febrero 2021">March 2014 - February 2021</span></p>
+            <p class="note"><b data-en="Final Project:" data-es="Proyecto Final:">Final Project:</b> <span data-en="Introduction to business intelligence and proposals for improvement in a plastic packaging factory." data-es="Introducción al business intelligence y propuestas de mejora en una fábrica de envases plásticos.">Introduction to business intelligence and proposals for improvement in a plastic packaging factory.</span></p>
+          </div>
 
-        <div class="edu-item">
-          <h3 data-en="Diploma in Data Science, Machine Learning and Their Applications" data-es="Diplomatura en Ciencia de Datos, Aprendizaje Automático y sus Aplicaciones">Diploma in Data Science, Machine Learning and Their Applications</h3>
-          <p class="meta">Universidad Nacional de Córdoba - FAMAF · <span data-en="February 2021 - December 2021" data-es="Febrero 2021 - Diciembre 2021">February 2021 - December 2021</span></p>
-          <p class="note"><b data-en="Final Project:" data-es="Proyecto Final:">Final Project:</b> <span data-en="Applying Machine Learning to demand prediction." data-es="Aplicación de Machine Learning a la predicción de demanda.">Applying Machine Learning to demand prediction.</span></p>
-        </div>
+          <div class="edu-item">
+            <h3 data-en="Diploma in Data Science, Machine Learning and Their Applications" data-es="Diplomatura en Ciencia de Datos, Aprendizaje Automático y sus Aplicaciones">Diploma in Data Science, Machine Learning and Their Applications</h3>
+            <p class="meta">Universidad Nacional de Córdoba - FAMAF · <span data-en="February 2021 - December 2021" data-es="Febrero 2021 - Diciembre 2021">February 2021 - December 2021</span></p>
+            <p class="note"><b data-en="Final Project:" data-es="Proyecto Final:">Final Project:</b> <span data-en="Applying Machine Learning to demand prediction." data-es="Aplicación de Machine Learning a la predicción de demanda.">Applying Machine Learning to demand prediction.</span></p>
+          </div>
 
-        <div class="edu-item">
-          <h3 data-en="Business Intelligence Executive Program" data-es="Programa Ejecutivo de Business Intelligence">Business Intelligence Executive Program</h3>
-          <p class="meta">Business School - Universidad Torcuato Di Tella · <span data-en="October 2021 - November 2021" data-es="Octubre 2021 - Noviembre 2021">October 2021 - November 2021</span></p>
-        </div>
+          <div class="edu-item">
+            <h3 data-en="Business Intelligence Executive Program" data-es="Programa Ejecutivo de Business Intelligence">Business Intelligence Executive Program</h3>
+            <p class="meta">Business School - Universidad Torcuato Di Tella · <span data-en="October 2021 - November 2021" data-es="Octubre 2021 - Noviembre 2021">October 2021 - November 2021</span></p>
+          </div>
 
-        <div class="edu-item">
-          <h3 data-en="Fundamentals of Databases (Oracle Database)" data-es="Fundamentos de Bases de Datos (Oracle Database)">Fundamentals of Databases (Oracle Database)</h3>
-          <p class="meta">UTN FRBA e-Learning Center · <span data-en="August 2022 - September 2022" data-es="Agosto 2022 - Septiembre 2022">August 2022 - September 2022</span></p>
-        </div>
+          <div class="edu-item">
+            <h3 data-en="Fundamentals of Databases (Oracle Database)" data-es="Fundamentos de Bases de Datos (Oracle Database)">Fundamentals of Databases (Oracle Database)</h3>
+            <p class="meta">UTN FRBA e-Learning Center · <span data-en="August 2022 - September 2022" data-es="Agosto 2022 - Septiembre 2022">August 2022 - September 2022</span></p>
+          </div>
+        </details>
       </section>
 
       <!-- Certifications -->
       <section>
-        <h2 class="block-title" data-en="Certifications" data-es="Certificaciones">Certifications</h2>
-        <p class="cert-line"><b>SnowPro Core Certification</b> — Snowflake · <span data-en="Issued March 2025" data-es="Emitida en Marzo 2025">Issued March 2025</span></p>
+        <details class="section-toggle" open>
+          <summary data-en="Certifications" data-es="Certificaciones">Certifications</summary>
+          <p class="cert-line"><b>SnowPro Core Certification</b> — Snowflake · <span data-en="Issued March 2025" data-es="Emitida en Marzo 2025">Issued March 2025</span></p>
+        </details>
       </section>
 
       <!-- Skills -->
       <section>
-        <h2 class="block-title">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-group"><div class="label">Data Warehouse</div><div class="val">Snowflake</div></div>
-          <div class="skill-group"><div class="label" data-en="Data Transformation" data-es="Transformación de Datos">Data Transformation</div><div class="val">dbt, SQL</div></div>
-          <div class="skill-group"><div class="label" data-en="Data Ingestion" data-es="Ingesta de Datos">Data Ingestion</div><div class="val">Fivetran</div></div>
-          <div class="skill-group"><div class="label">Business Intelligence</div><div class="val">Power BI, Tableau, Looker Studio</div></div>
-          <div class="skill-group"><div class="label" data-en="Programming" data-es="Programación">Programming</div><div class="val">Python, Git</div></div>
-        </div>
+        <details class="section-toggle" open>
+          <summary>Skills</summary>
+          <div class="skills-grid">
+            <div class="skill-group"><div class="label">Data Warehouse</div><div class="val">Snowflake</div></div>
+            <div class="skill-group"><div class="label" data-en="Data Transformation" data-es="Transformación de Datos">Data Transformation</div><div class="val">dbt, SQL</div></div>
+            <div class="skill-group"><div class="label" data-en="Data Ingestion" data-es="Ingesta de Datos">Data Ingestion</div><div class="val">Fivetran</div></div>
+            <div class="skill-group"><div class="label">Business Intelligence</div><div class="val">Power BI, Tableau, Looker Studio</div></div>
+            <div class="skill-group"><div class="label" data-en="Programming" data-es="Programación">Programming</div><div class="val">Python, Git</div></div>
+          </div>
+        </details>
       </section>
 
       <!-- Languages -->
       <section>
-        <h2 class="block-title" data-en="Languages" data-es="Idiomas">Languages</h2>
-        <p class="lang-line"><b data-en="Spanish" data-es="Español">Spanish</b>: <span data-en="Native" data-es="Nativo">Native</span></p>
-        <p class="lang-line"><b data-en="English" data-es="Inglés">English</b>: Full Professional Proficiency</p>
+        <details class="section-toggle" open>
+          <summary data-en="Languages" data-es="Idiomas">Languages</summary>
+          <p class="lang-line"><b data-en="Spanish" data-es="Español">Spanish</b>: <span data-en="Native" data-es="Nativo">Native</span></p>
+          <p class="lang-line"><b data-en="English" data-es="Inglés">English</b>: Full Professional Proficiency</p>
+        </details>
       </section>
+
     </main>
   </div>
 
   <script>
-    // CV-as-Code: single DOM, both languages stored inline via data-en / data-es.
-    // setLang swaps every translatable node's text and persists the choice.
     function setLang(lang) {
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
