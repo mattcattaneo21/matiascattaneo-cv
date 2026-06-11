@@ -3,492 +3,286 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matias Cattaneo — Analytics Engineer</title>
-  <style>
-    :root {
-      --bg: #f4f5f7;
-      --surface: #ffffff;
-      --ink: #1c2733;
-      --ink-soft: #54616e;
-      --accent: #1f6feb;
-      --accent-soft: #e8f0fe;
-      --line: #e2e6ea;
-      --radius: 12px;
-      --maxw: 820px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      padding: 24px 16px 48px;
-    }
-
-    .sheet {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: 0 2px 18px rgba(28, 39, 51, 0.08);
-      overflow: hidden;
-    }
-
-    /* ---------- Language switch ---------- */
-    .lang-switch {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: flex-end;
-      gap: 4px;
-      padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--line);
-    }
-    .lang-switch button {
-      font: inherit;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--ink-soft);
-      padding: 5px 14px;
-      border-radius: 999px;
-      transition: all 0.15s ease;
-    }
-    .lang-switch button:hover { border-color: var(--accent); color: var(--accent); }
-    .lang-switch button[aria-pressed="true"] {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-    .lang-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-    /* ---------- Header ---------- */
-    header.masthead {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      padding: 32px;
-      background: linear-gradient(135deg, #1c2733 0%, #2d4358 100%);
-      color: #fff;
-    }
-    .avatar {
-      flex: 0 0 auto;
-      width: 104px;
-      height: 104px;
-      border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.7);
-      background: var(--accent);
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 2.1rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .avatar::before { content: "MC"; }
-    .avatar img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .masthead h1 { font-size: 1.9rem; line-height: 1.15; }
-    .masthead .role { font-size: 1.1rem; opacity: 0.92; margin-top: 4px; }
-    .masthead .summary { font-size: 0.92rem; opacity: 0.85; margin-top: 12px; max-width: 58ch; }
-    .contact {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      margin-top: 16px;
-      font-size: 0.85rem;
-    }
-    .contact a { color: #fff; text-decoration: none; opacity: 0.92; }
-    .contact a:hover { text-decoration: underline; opacity: 1; }
-
-    /* ---------- Content ---------- */
-    main.content { padding: 28px 32px; }
-    .content section + section { margin-top: 34px; }
-
-    /* ---------- Section toggle ---------- */
-    details.section-toggle > summary {
-      list-style: none;
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--accent);
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--accent-soft);
-    }
-    details.section-toggle > summary::-webkit-details-marker { display: none; }
-    details.section-toggle > summary::after {
-      content: "›";
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: var(--accent);
-      line-height: 1;
-      transition: transform 0.15s;
-    }
-    details.section-toggle[open] > summary::after {
-      transform: rotate(90deg);
-    }
-    details.section-toggle > summary + * { margin-top: 14px; }
-
-    /* ---------- Job toggle ---------- */
-    details.job { margin-bottom: 22px; }
-    details.job:last-child { margin-bottom: 0; }
-    details.job > summary {
-      list-style: none;
-      cursor: pointer;
-      user-select: none;
-      display: block;
-      border-radius: 5px;
-      margin: -3px -6px;
-      padding: 3px 6px;
-      transition: background 0.12s;
-    }
-    details.job > summary::-webkit-details-marker { display: none; }
-    details.job > summary:hover { background: var(--accent-soft); }
-    details.job > summary h3 {
-      font-size: 1rem;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    details.job > summary h3::after {
-      content: "›";
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--ink-soft);
-      flex-shrink: 0;
-      transition: transform 0.15s;
-    }
-    details.job[open] > summary h3::after {
-      transform: rotate(90deg);
-    }
-    .job-meta { font-size: 0.8rem; color: var(--ink-soft); margin: 2px 0 0; }
-    .job ul { margin: 10px 0 8px 18px; }
-    .job li { font-size: 0.88rem; margin-bottom: 4px; }
-    .tags { font-size: 0.78rem; color: var(--ink-soft); margin-top: 6px; }
-    .tags b { color: var(--ink); font-weight: 600; }
-    .nested { padding-left: 14px; border-left: 2px solid var(--accent-soft); margin-top: 12px; }
-
-    /* ---------- Nested job toggle ---------- */
-    details.nested-job + details.nested-job { margin-top: 12px; }
-    details.nested-job > summary {
-      list-style: none;
-      cursor: pointer;
-      user-select: none;
-      display: block;
-      border-radius: 4px;
-      margin: -2px -4px;
-      padding: 2px 4px;
-      transition: background 0.12s;
-    }
-    details.nested-job > summary::-webkit-details-marker { display: none; }
-    details.nested-job > summary:hover { background: var(--accent-soft); }
-    .nested-sub {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .nested-sub::after {
-      content: "›";
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: var(--ink-soft);
-      flex-shrink: 0;
-      transition: transform 0.15s;
-    }
-    details.nested-job[open] > summary .nested-sub::after {
-      transform: rotate(90deg);
-    }
-    .nested-meta { font-size: 0.8rem; color: var(--ink-soft); margin: 1px 0 0; }
-    details.nested-job ul { margin: 8px 0 8px 18px; }
-    details.nested-job li { font-size: 0.88rem; margin-bottom: 4px; }
-
-    /* ---------- Education ---------- */
-    .edu-item { margin-bottom: 16px; }
-    .edu-item:last-child { margin-bottom: 0; }
-    .edu-item h3 { font-size: 0.95rem; }
-    .edu-item .meta { font-size: 0.8rem; color: var(--ink-soft); }
-    .edu-item .note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 3px; }
-
-    /* ---------- Certifications ---------- */
-    .cert-line { font-size: 0.88rem; color: var(--ink-soft); }
-    .cert-line b { color: var(--ink); font-weight: 600; }
-
-    /* ---------- Skills ---------- */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 28px;
-    }
-    .skill-group .label { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
-    .skill-group .val { font-size: 0.82rem; color: var(--ink-soft); }
-
-    /* ---------- Languages ---------- */
-    .lang-line { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 6px; }
-    .lang-line b { color: var(--ink); font-weight: 600; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 640px) {
-      header.masthead { flex-direction: column; text-align: center; padding: 28px 20px; }
-      .contact { justify-content: center; }
-      .masthead .summary { margin-left: auto; margin-right: auto; }
-      main.content { padding: 24px 20px; }
-      .skills-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-  <div class="sheet">
-    <!-- Language switch -->
-    <nav class="lang-switch" aria-label="Language / Idioma">
-      <button id="btn-en" type="button" aria-pressed="true" onclick="setLang('en')">EN</button>
-      <button id="btn-es" type="button" aria-pressed="false" onclick="setLang('es')">ES</button>
-    </nav>
-
-    <!-- Header -->
-    <header class="masthead">
-      <div class="avatar" role="img" aria-label="Matias Cattaneo">
-        <img src="assets/profile.jpg" alt="" onerror="this.remove()">
-      </div>
-      <div>
-        <h1>Matias Cattaneo</h1>
-        <p class="role">Analytics Engineer</p>
-        <p class="summary"
-           data-en="Analytics Engineer with an Industrial Engineering background. I build data pipelines, models, and dashboards with Snowflake, dbt, and Power BI so companies can make decisions with reliable data."
-           data-es="Analytics Engineer con base en Ingeniería Industrial. Construyo pipelines, modelos y dashboards con Snowflake, dbt y Power BI para que las empresas decidan con datos confiables.">Analytics Engineer with an Industrial Engineering background. I build data pipelines, models, and dashboards with Snowflake, dbt, and Power BI so companies can make decisions with reliable data.</p>
-        <ul class="contact">
-          <li><a href="mailto:mcattaneo2195@gmail.com">mcattaneo2195@gmail.com</a></li>
-          <li><a href="https://linkedin.com/in/matiascattaneo" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
-      </div>
-    </header>
-
-    <!-- Main content -->
-    <main class="content">
-
-      <!-- Experience -->
-      <section>
-        <details class="section-toggle" open>
-          <summary data-en="Professional Experience" data-es="Experiencia Profesional">Professional Experience</summary>
-
-          <details class="job" open>
-            <summary>
-              <h3>Data Engineer | IAgro</h3>
-              <div class="job-meta" data-en="September 2025 - Present" data-es="Septiembre 2025 - Actualidad">September 2025 - Present</div>
-            </summary>
-            <ul>
-              <li data-en="Build and maintain Snowflake data pipelines for agriculture clients." data-es="Construyo y mantengo pipelines de datos en Snowflake para clientes del agro.">Build and maintain Snowflake data pipelines for agriculture clients.</li>
-              <li data-en="Develop dbt models that turn raw data into clean, documented datasets." data-es="Desarrollo modelos en dbt que convierten datos crudos en datasets limpios y documentados.">Develop dbt models that turn raw data into clean, documented datasets.</li>
-              <li data-en="Automate data ingestion from client systems into Snowflake with Fivetran." data-es="Automatizo la ingesta de datos de los sistemas de clientes hacia Snowflake con Fivetran.">Automate data ingestion from client systems into Snowflake with Fivetran.</li>
-              <li data-en="Build dashboards in Power BI and Looker Studio to track farm production KPIs." data-es="Armo dashboards en Power BI y Looker Studio para seguir KPIs de producción agrícola.">Build dashboards in Power BI and Looker Studio to track farm production KPIs.</li>
-              <li data-en="Built AI assistants on Snowflake that let users ask questions about their data in plain language." data-es="Construí asistentes de IA sobre Snowflake para consultar datos en lenguaje natural.">Built AI assistants on Snowflake that let users ask questions about their data in plain language.</li>
-              <li data-en="Standardize reference data across clients so reports stay consistent." data-es="Estandarizo datos de referencia entre clientes para que los reportes sean consistentes.">Standardize reference data across clients so reports stay consistent.</li>
-              <li data-en="Manage Snowflake roles, access, and warehouse costs." data-es="Administro roles, accesos y costos de warehouse en Snowflake.">Manage Snowflake roles, access, and warehouse costs.</li>
-              <li data-en="Support multiple clients end to end: data quality, KPIs, and troubleshooting." data-es="Doy soporte integral a varios clientes: calidad de datos, KPIs y resolución de problemas.">Support multiple clients end to end: data quality, KPIs, and troubleshooting.</li>
-            </ul>
-            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Snowflake, dbt, Fivetran, Power BI, Looker Studio · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Agriculture" data-es="Agro">Agriculture</span></p>
-          </details>
-
-          <details class="job" open>
-            <summary>
-              <h3 data-en="Data &amp; Analytics Consultant | Inisoft" data-es="Consultor de Datos &amp; Analytics | Inisoft">Data &amp; Analytics Consultant | Inisoft</h3>
-              <div class="job-meta" data-en="September 2023 - August 2025" data-es="Septiembre 2023 - Agosto 2025">September 2023 - August 2025</div>
-            </summary>
-            <div class="nested">
-              <details class="nested-job" open>
-                <summary>
-                  <div class="nested-sub" data-en="Client Assignment: Analytics Engineer | Hakkoda" data-es="Asignación a Cliente: Analytics Engineer | Hakkoda">Client Assignment: Analytics Engineer | Hakkoda</div>
-                  <div class="nested-meta" data-en="January 2025 - August 2025" data-es="Enero 2025 - Agosto 2025">January 2025 - August 2025</div>
-                </summary>
-                <ul>
-                  <li data-en="Built dbt data pipelines for repeatable ELT processes." data-es="Construí pipelines de datos con dbt para procesos ELT repetibles.">Built dbt data pipelines for repeatable ELT processes.</li>
-                  <li data-en="Created Tableau dashboards for business analysis." data-es="Creé dashboards en Tableau para análisis de negocio.">Created Tableau dashboards for business analysis.</li>
-                  <li data-en="Validated data with SQL in Snowflake." data-es="Validé datos con SQL en Snowflake.">Validated data with SQL in Snowflake.</li>
-                  <li data-en="Worked with business, IT, and Governance teams to turn analytics needs into data assets." data-es="Trabajé con equipos de negocio, IT y Gobierno de Datos para convertir necesidades de analytics en activos de datos.">Worked with business, IT, and Governance teams to turn analytics needs into data assets.</li>
-                </ul>
-                <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Tableau, dbt, SQL, Snowflake, Git, Bitbucket · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Retail - Food Distribution (US Foods)" data-es="Retail - Distribución de Alimentos (US Foods)">Retail - Food Distribution (US Foods)</span></p>
-              </details>
-
-              <details class="nested-job" open>
-                <summary>
-                  <div class="nested-sub" data-en="Client Assignment: Business Analyst | Speedcast" data-es="Asignación a Cliente: Business Analyst | Speedcast">Client Assignment: Business Analyst | Speedcast</div>
-                  <div class="nested-meta" data-en="January 2024 - January 2025" data-es="Enero 2024 - Enero 2025">January 2024 - January 2025</div>
-                </summary>
-                <ul>
-                  <li data-en="Improved customer and product data processes, identifying automation opportunities." data-es="Mejoré procesos de datos de clientes y productos, identificando oportunidades de automatización.">Improved customer and product data processes, identifying automation opportunities.</li>
-                  <li data-en="Compared MDM tools (IBM InfoSphere, Microsoft Purview, Profisee) to support a tool recommendation." data-es="Comparé herramientas de MDM (IBM InfoSphere, Microsoft Purview, Profisee) para recomendar una.">Compared MDM tools (IBM InfoSphere, Microsoft Purview, Profisee) to support a tool recommendation.</li>
-                  <li data-en="Mapped the new customer account setup process to clarify roles and steps." data-es="Mapeé el proceso de alta de nuevas cuentas de clientes para clarificar roles y pasos.">Mapped the new customer account setup process to clarify roles and steps.</li>
-                  <li data-en="Helped integrate Dynamics 365 CRM and ServiceNow to speed up order creation." data-es="Ayudé a integrar Dynamics 365 CRM y ServiceNow para agilizar la creación de órdenes.">Helped integrate Dynamics 365 CRM and ServiceNow to speed up order creation.</li>
-                </ul>
-                <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, Microsoft Purview, Azure DevOps, Miro, Dynamics 365 · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Telecommunications" data-es="Telecomunicaciones">Telecommunications</span></p>
-              </details>
-
-              <details class="nested-job" open>
-                <summary>
-                  <div class="nested-sub" data-en="Client Assignment: Data Governance Analyst | Hakkoda" data-es="Asignación a Cliente: Data Governance Analyst | Hakkoda">Client Assignment: Data Governance Analyst | Hakkoda</div>
-                  <div class="nested-meta" data-en="September 2023 - January 2024" data-es="Septiembre 2023 - Enero 2024">September 2023 - January 2024</div>
-                </summary>
-                <ul>
-                  <li data-en="Introduced data governance concepts to business and IT teams." data-es="Introduje conceptos de gobierno de datos a equipos de negocio e IT.">Introduced data governance concepts to business and IT teams.</li>
-                  <li data-en="Reviewed data policies and proposed improvements." data-es="Revisé políticas de datos y propuse mejoras.">Reviewed data policies and proposed improvements.</li>
-                  <li data-en="Validated report metrics during the migration of legacy reports to Snowflake, Tableau, and Sigma." data-es="Validé métricas de reportes durante la migración de reportes legados a Snowflake, Tableau y Sigma.">Validated report metrics during the migration of legacy reports to Snowflake, Tableau, and Sigma.</li>
-                </ul>
-                <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> SQL, Snowflake, Alation · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Retail - Food Distribution (US Foods)" data-es="Retail - Distribución de Alimentos (US Foods)">Retail - Food Distribution (US Foods)</span></p>
-              </details>
-            </div>
-          </details>
-
-          <details class="job" open>
-            <summary>
-              <h3 data-en="Data Governance Analyst | Banco de Cordoba" data-es="Data Governance Analyst | Banco de Córdoba">Data Governance Analyst | Banco de Cordoba</h3>
-              <div class="job-meta" data-en="August 2022 - August 2023" data-es="Agosto 2022 - Agosto 2023">August 2022 - August 2023</div>
-            </summary>
-            <ul>
-              <li data-en="Managed data assets to keep Power BI reports accurate and available." data-es="Gestioné activos de datos para mantener reportes de Power BI precisos y disponibles.">Managed data assets to keep Power BI reports accurate and available.</li>
-              <li data-en="Wrote SQL to model credit card data for the Risk Prevention area." data-es="Escribí SQL para modelar datos de tarjetas de crédito para Prevención de Riesgos.">Wrote SQL to model credit card data for the Risk Prevention area.</li>
-              <li data-en="Ensured data consistency between the payment processor (Prisma) and the core system." data-es="Aseguré la consistencia de datos entre el procesador de pagos (Prisma) y el sistema core.">Ensured data consistency between the payment processor (Prisma) and the core system.</li>
-              <li data-en="Helped internal teams adopt new data tools and processes." data-es="Ayudé a equipos internos a adoptar nuevas herramientas y procesos de datos.">Helped internal teams adopt new data tools and processes.</li>
-              <li data-en="Profiled data assets with Python." data-es="Perfilé activos de datos con Python.">Profiled data assets with Python.</li>
-            </ul>
-            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, Microsoft SQL Server, Python, Oracle Database · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Finance" data-es="Finanzas">Finance</span></p>
-          </details>
-
-          <details class="job" open>
-            <summary>
-              <h3 data-en="Data Analyst (BI) | Plasticos Dise" data-es="Analista de Datos (BI) | Plásticos Dise">Data Analyst (BI) | Plasticos Dise</h3>
-              <div class="job-meta" data-en="August 2020 - July 2022" data-es="Agosto 2020 - Julio 2022">August 2020 - July 2022</div>
-            </summary>
-            <ul>
-              <li data-en="Digitalized data collection with Google Forms, improving accuracy and access." data-es="Digitalicé la recolección de datos con Google Forms, mejorando precisión y acceso.">Digitalized data collection with Google Forms, improving accuracy and access.</li>
-              <li data-en="Built productivity reports and dashboards with OEE and OKR indicators." data-es="Armé reportes de productividad y dashboards con indicadores OEE y OKR.">Built productivity reports and dashboards with OEE and OKR indicators.</li>
-              <li data-en="Measured on-time delivery (OTD) and proposed improvements." data-es="Medí la entrega a tiempo (OTD) y propuse mejoras.">Measured on-time delivery (OTD) and proposed improvements.</li>
-              <li data-en="Managed inventory control and planning with SAP." data-es="Gestioné el control y planificación de inventario con SAP.">Managed inventory control and planning with SAP.</li>
-            </ul>
-            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Power BI, SAP · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Manufacturing" data-es="Manufactura">Manufacturing</span></p>
-          </details>
-
-          <details class="job" open>
-            <summary>
-              <h3 data-en="Process Engineering Intern | Plasticos Dise" data-es="Pasante de Ingeniería de Procesos | Plásticos Dise">Process Engineering Intern | Plasticos Dise</h3>
-              <div class="job-meta" data-en="February 2019 - July 2020" data-es="Febrero 2019 - Julio 2020">February 2019 - July 2020</div>
-            </summary>
-            <ul>
-              <li data-en="Standardized production data to improve process efficiency." data-es="Estandaricé datos de producción para mejorar la eficiencia de los procesos.">Standardized production data to improve process efficiency.</li>
-              <li data-en="Reduced machine setup times with the SMED method." data-es="Reduje tiempos de setup de máquinas con el método SMED.">Reduced machine setup times with the SMED method.</li>
-              <li data-en="Created training guides to standardize operations." data-es="Creé guías de capacitación para estandarizar la operación.">Created training guides to standardize operations.</li>
-              <li data-en="Mapped processes (VSM) to find and remove inefficiencies." data-es="Mapeé procesos (VSM) para encontrar y eliminar ineficiencias.">Mapped processes (VSM) to find and remove inefficiencies.</li>
-            </ul>
-            <p class="tags"><b data-en="Tools:" data-es="Herramientas:">Tools:</b> Microsoft Office, Poka · <b data-en="Field:" data-es="Industria:">Field:</b> <span data-en="Manufacturing" data-es="Manufactura">Manufacturing</span></p>
-          </details>
-        </details>
-      </section>
-
-      <!-- Education -->
-      <section>
-        <details class="section-toggle" open>
-          <summary data-en="Education" data-es="Educación">Education</summary>
-
-          <div class="edu-item">
-            <h3 data-en="Industrial Engineering Degree" data-es="Ingeniería Industrial">Industrial Engineering Degree</h3>
-            <p class="meta">Universidad Tecnológica Nacional - Facultad Regional Córdoba · <span data-en="March 2014 - February 2021" data-es="Marzo 2014 - Febrero 2021">March 2014 - February 2021</span></p>
-            <p class="note"><b data-en="Final Project:" data-es="Proyecto Final:">Final Project:</b> <span data-en="Introduction to business intelligence and proposals for improvement in a plastic packaging factory." data-es="Introducción al business intelligence y propuestas de mejora en una fábrica de envases plásticos.">Introduction to business intelligence and proposals for improvement in a plastic packaging factory.</span></p>
-          </div>
-
-          <div class="edu-item">
-            <h3 data-en="Diploma in Data Science, Machine Learning and Their Applications" data-es="Diplomatura en Ciencia de Datos, Aprendizaje Automático y sus Aplicaciones">Diploma in Data Science, Machine Learning and Their Applications</h3>
-            <p class="meta">Universidad Nacional de Córdoba - FAMAF · <span data-en="February 2021 - December 2021" data-es="Febrero 2021 - Diciembre 2021">February 2021 - December 2021</span></p>
-            <p class="note"><b data-en="Final Project:" data-es="Proyecto Final:">Final Project:</b> <span data-en="Applying Machine Learning to demand prediction." data-es="Aplicación de Machine Learning a la predicción de demanda.">Applying Machine Learning to demand prediction.</span></p>
-          </div>
-
-          <div class="edu-item">
-            <h3 data-en="Business Intelligence Executive Program" data-es="Programa Ejecutivo de Business Intelligence">Business Intelligence Executive Program</h3>
-            <p class="meta">Business School - Universidad Torcuato Di Tella · <span data-en="October 2021 - November 2021" data-es="Octubre 2021 - Noviembre 2021">October 2021 - November 2021</span></p>
-          </div>
-
-          <div class="edu-item">
-            <h3 data-en="Fundamentals of Databases (Oracle Database)" data-es="Fundamentos de Bases de Datos (Oracle Database)">Fundamentals of Databases (Oracle Database)</h3>
-            <p class="meta">UTN FRBA e-Learning Center · <span data-en="August 2022 - September 2022" data-es="Agosto 2022 - Septiembre 2022">August 2022 - September 2022</span></p>
-          </div>
-        </details>
-      </section>
-
-      <!-- Certifications -->
-      <section>
-        <details class="section-toggle" open>
-          <summary data-en="Certifications" data-es="Certificaciones">Certifications</summary>
-          <p class="cert-line"><b>SnowPro Core Certification</b> — Snowflake · <span data-en="Issued March 2025" data-es="Emitida en Marzo 2025">Issued March 2025</span></p>
-        </details>
-      </section>
-
-      <!-- Skills -->
-      <section>
-        <details class="section-toggle" open>
-          <summary>Skills</summary>
-          <div class="skills-grid">
-            <div class="skill-group"><div class="label">Data Warehouse</div><div class="val">Snowflake</div></div>
-            <div class="skill-group"><div class="label" data-en="Data Transformation" data-es="Transformación de Datos">Data Transformation</div><div class="val">dbt, SQL</div></div>
-            <div class="skill-group"><div class="label" data-en="Data Ingestion" data-es="Ingesta de Datos">Data Ingestion</div><div class="val">Fivetran</div></div>
-            <div class="skill-group"><div class="label">Business Intelligence</div><div class="val">Power BI, Tableau, Looker Studio</div></div>
-            <div class="skill-group"><div class="label" data-en="Programming" data-es="Programación">Programming</div><div class="val">Python, Git</div></div>
-          </div>
-        </details>
-      </section>
-
-      <!-- Languages -->
-      <section>
-        <details class="section-toggle" open>
-          <summary data-en="Languages" data-es="Idiomas">Languages</summary>
-          <p class="lang-line"><b data-en="Spanish" data-es="Español">Spanish</b>: <span data-en="Native" data-es="Nativo">Native</span></p>
-          <p class="lang-line"><b data-en="English" data-es="Inglés">English</b>: Full Professional Proficiency</p>
-        </details>
-      </section>
-
-    </main>
-  </div>
-
+  <title>Matias Cattaneo — Analytics Engineer | Snowflake · dbt · Power BI</title>
+  <meta name="description" content="Analytics Engineer specialized in Snowflake, dbt, and Power BI. SnowPro Core certified. I build governed data pipelines, models, and dashboards across agriculture, retail, banking, telecom, and manufacturing.">
+  <meta property="og:title" content="Matias Cattaneo — Analytics Engineer">
+  <meta property="og:description" content="Snowflake · dbt · Power BI. SnowPro Core certified Analytics Engineer building data pipelines and dashboards companies can trust.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="es" href="es/">
+  <meta name="color-scheme" content="light dark">
   <script>
-    function setLang(lang) {
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
-        el.innerHTML = el.getAttribute('data-' + lang);
-      });
-      document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
-      document.getElementById('btn-es').setAttribute('aria-pressed', lang === 'es');
-      try { localStorage.setItem('cv-lang', lang); } catch (e) {}
-    }
-
-    (function init() {
-      var saved = 'en';
-      try { saved = localStorage.getItem('cv-lang') || 'en'; } catch (e) {}
-      setLang(saved);
+    // Resolve theme before first paint to avoid a flash of the wrong scheme.
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem('theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.dataset.theme = theme;
     })();
   </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="wrap">
+      <a class="brand" href="#top">Matias Cattaneo</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="lang-switch" aria-label="Language">
+        <a class="lang-btn" href="./" aria-current="page">EN</a>
+        <a class="lang-btn" href="es/" hreflang="es" lang="es">ES</a>
+      </div>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch between dark and light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ===== Hero / About ===== -->
+    <section class="hero" id="about" aria-labelledby="hero-name">
+      <div class="wrap hero-grid" id="top">
+        <div class="avatar" role="img" aria-label="Matias Cattaneo">
+          <img src="assets/profile.jpg" alt="" onerror="this.remove()">
+        </div>
+        <div>
+          <h1 id="hero-name">Matias Cattaneo</h1>
+          <p class="role">Analytics Engineer · Snowflake | dbt | Power BI</p>
+          <p class="pitch">
+            I build the data layer companies make decisions on: Snowflake pipelines,
+            dbt models, and BI dashboards that business teams actually trust.
+            Industrial Engineering foundation, 5+ years across agriculture, retail,
+            banking, telecom, and manufacturing.
+          </p>
+          <ul class="proof-bar">
+            <li>SnowPro Core Certified</li>
+            <li>5 industries, end-to-end ownership</li>
+            <li>English &amp; Spanish</li>
+          </ul>
+          <div class="hero-cta">
+            <button class="btn btn-primary" type="button" onclick="window.print()">Download Resume (PDF)</button>
+            <a class="btn btn-secondary" href="#experience">View Experience</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <p class="section-sub">The modern data stack, from ingestion to the dashboard.</p>
+        <div class="skills-grid">
+          <div class="card skill-card reveal">
+            <h3>Data Warehouse</h3>
+            <ul class="chips"><li>Snowflake</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Data Transformation</h3>
+            <ul class="chips"><li>dbt</li><li>SQL</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Data Ingestion</h3>
+            <ul class="chips"><li>Fivetran</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Business Intelligence</h3>
+            <ul class="chips"><li>Power BI</li><li>Tableau</li><li>Looker Studio</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Programming</h3>
+            <ul class="chips"><li>Python</li><li>Git</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Governance &amp; Quality</h3>
+            <ul class="chips"><li>Alation</li><li>Microsoft Purview</li><li>Data Quality</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Certifications ===== -->
+    <section id="certifications" aria-labelledby="cert-title">
+      <div class="wrap">
+        <h2 class="section-title" id="cert-title">Certifications</h2>
+        <div class="card cert-card reveal">
+          <div class="cert-badge" aria-hidden="true">❄</div>
+          <div>
+            <h3>SnowPro Core Certification</h3>
+            <p class="meta">Snowflake · Issued March 2025</p>
+            <a class="cert-link" href="https://achieve.snowflake.com/28c1f5fc-b68b-4dea-9faf-e282e748a96b#acc.XBHFcNiZ" target="_blank" rel="noopener">View credential →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="wrap">
+        <h2 class="section-title" id="exp-title">Professional Experience</h2>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Data Engineer</h3>
+            <span class="dates">September 2025 – Present</span>
+          </div>
+          <p class="org">IAgro · Agriculture</p>
+          <ul>
+            <li>Own the data platform end to end for multiple agriculture clients: automated ingestion with Fivetran, Snowflake warehousing, dbt models, and Power BI / Looker Studio dashboards tracking farm-production KPIs.</li>
+            <li>Built AI assistants on Snowflake that answer plain-language questions over client data, removing the analyst bottleneck for routine queries.</li>
+            <li>Standardized reference data across all clients in dbt, eliminating cross-client report inconsistencies and rework.</li>
+            <li>Administer Snowflake roles, access, and warehouse sizing, keeping compute costs controlled as new clients onboard.</li>
+            <li>Act as single point of accountability per client for data quality, KPI definitions, and production troubleshooting.</li>
+          </ul>
+          <p class="tags"><b>Tools:</b> Snowflake, dbt, Fivetran, Power BI, Looker Studio</p>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Data &amp; Analytics Consultant</h3>
+            <span class="dates">September 2023 – August 2025</span>
+          </div>
+          <p class="org">Inisoft · Consulting</p>
+          <div class="engagements">
+
+            <div class="engagement">
+              <h4>Analytics Engineer — Hakkoda (US Foods)</h4>
+              <p class="dates">January 2025 – August 2025 · Retail, Food Distribution</p>
+              <ul>
+                <li>Built dbt pipelines on Snowflake powering repeatable ELT for US Foods, a Fortune 500 food distributor.</li>
+                <li>Created Tableau dashboards for business analysis and validated the underlying data with SQL in Snowflake.</li>
+                <li>Partnered with business, IT, and Data Governance teams to turn analytics requirements into governed, reusable data assets.</li>
+              </ul>
+              <p class="tags"><b>Tools:</b> Tableau, dbt, SQL, Snowflake, Git, Bitbucket</p>
+            </div>
+
+            <div class="engagement">
+              <h4>Business Analyst — Speedcast</h4>
+              <p class="dates">January 2024 – January 2025 · Telecommunications</p>
+              <ul>
+                <li>Re-engineered customer and product master-data processes, identifying automation opportunities that removed manual steps from account setup.</li>
+                <li>Evaluated MDM platforms (IBM InfoSphere, Microsoft Purview, Profisee) and delivered the comparison that informed the company's tooling decision.</li>
+                <li>Mapped the new-customer onboarding flow end to end, clarifying ownership and steps across teams.</li>
+                <li>Supported the integration of Dynamics 365 CRM with ServiceNow to accelerate order creation.</li>
+              </ul>
+              <p class="tags"><b>Tools:</b> Power BI, Microsoft Purview, Azure DevOps, Miro, Dynamics 365</p>
+            </div>
+
+            <div class="engagement">
+              <h4>Data Governance Analyst — Hakkoda (US Foods)</h4>
+              <p class="dates">September 2023 – January 2024 · Retail, Food Distribution</p>
+              <ul>
+                <li>Validated report metrics through the migration of legacy reports to Snowflake, Tableau, and Sigma, protecting trust in the numbers during cutover.</li>
+                <li>Introduced data-governance practices to business and IT teams; reviewed data policies and proposed improvements that were adopted.</li>
+              </ul>
+              <p class="tags"><b>Tools:</b> SQL, Snowflake, Alation</p>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Data Governance Analyst</h3>
+            <span class="dates">August 2022 – August 2023</span>
+          </div>
+          <p class="org">Banco de Córdoba · Banking</p>
+          <ul>
+            <li>Modeled credit-card data in SQL for the bank's Risk Prevention team.</li>
+            <li>Reconciled data between the payment processor (Prisma) and the bank's core system, preventing reporting mismatches.</li>
+            <li>Kept Power BI reporting accurate and available by curating the bank's data assets, profiling them with Python.</li>
+            <li>Drove adoption of new data tools and processes across internal teams.</li>
+          </ul>
+          <p class="tags"><b>Tools:</b> Power BI, Microsoft SQL Server, Python, Oracle Database</p>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Data Analyst (BI)</h3>
+            <span class="dates">August 2020 – July 2022</span>
+          </div>
+          <p class="org">Plásticos Dise · Manufacturing</p>
+          <ul>
+            <li>Replaced manual, paper-based production data capture with Google Forms, improving accuracy and plant-wide access to data.</li>
+            <li>Built OEE and OKR productivity dashboards in Power BI, giving plant leadership direct visibility into line performance.</li>
+            <li>Measured on-time delivery (OTD) and proposed corrective improvements; ran inventory control and planning in SAP.</li>
+          </ul>
+          <p class="tags"><b>Tools:</b> Power BI, SAP</p>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Process Engineering Intern</h3>
+            <span class="dates">February 2019 – July 2020</span>
+          </div>
+          <p class="org">Plásticos Dise · Manufacturing</p>
+          <ul>
+            <li>Reduced machine setup times by applying the SMED method.</li>
+            <li>Mapped value streams (VSM) to find and remove process inefficiencies.</li>
+            <li>Standardized production data and operations through normalization and training guides.</li>
+          </ul>
+          <p class="tags"><b>Tools:</b> Microsoft Office, Poka</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== Education ===== -->
+    <section id="education" aria-labelledby="edu-title">
+      <div class="wrap">
+        <h2 class="section-title" id="edu-title">Education</h2>
+        <div class="edu-grid">
+          <div class="card edu-card reveal">
+            <h3>Industrial Engineering Degree</h3>
+            <p class="meta">Universidad Tecnológica Nacional — Facultad Regional Córdoba · March 2014 – February 2021</p>
+            <p class="note"><b>Final Project:</b> Introduction to business intelligence and proposals for improvement in a plastic packaging factory.</p>
+          </div>
+          <div class="card edu-card reveal">
+            <h3>Diploma in Data Science, Machine Learning and Their Applications</h3>
+            <p class="meta">Universidad Nacional de Córdoba — FAMAF · February 2021 – December 2021</p>
+            <p class="note"><b>Final Project:</b> Applying Machine Learning to demand prediction.</p>
+          </div>
+          <div class="card edu-card reveal">
+            <h3>Business Intelligence Executive Program</h3>
+            <p class="meta">Business School — Universidad Torcuato Di Tella · October 2021 – November 2021</p>
+          </div>
+          <div class="card edu-card reveal">
+            <h3>Fundamentals of Databases (Oracle Database)</h3>
+            <p class="meta">UTN FRBA e-Learning Center · August 2022 – September 2022</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 class="section-title" id="contact-title">Contact</h2>
+        <p class="section-sub">Open to Analytics Engineering and Data Engineering roles.</p>
+        <div class="card contact-card reveal">
+          <ul class="contact-links">
+            <li><a class="btn btn-primary" href="mailto:mcattaneo2195@gmail.com">mcattaneo2195@gmail.com</a></li>
+            <li><a class="btn btn-secondary" href="https://linkedin.com/in/matiascattaneo" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+          <p class="languages"><b>Spanish:</b> Native · <b>English:</b> Full Professional Proficiency</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matias Cattaneo — Analytics Engineer | Snowflake · dbt · Power BI</title>
+  <meta name="description" content="Analytics Engineer especializado en Snowflake, dbt y Power BI. Certificado SnowPro Core. Construyo pipelines de datos gobernados, modelos y dashboards en agro, retail, banca, telecomunicaciones y manufactura.">
+  <meta property="og:title" content="Matias Cattaneo — Analytics Engineer">
+  <meta property="og:description" content="Snowflake · dbt · Power BI. Analytics Engineer certificado SnowPro Core. Pipelines de datos y dashboards en los que las empresas pueden confiar.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="../">
+  <link rel="alternate" hreflang="es" href="./">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    // Resolve theme before first paint to avoid a flash of the wrong scheme.
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem('theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <nav class="site-nav" aria-label="Navegación principal">
+    <div class="wrap">
+      <a class="brand" href="#top">Matias Cattaneo</a>
+      <ul class="nav-links">
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certificaciones</a></li>
+        <li><a href="#experience">Experiencia</a></li>
+        <li><a href="#education">Educación</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+      <div class="lang-switch" aria-label="Idioma">
+        <a class="lang-btn" href="../" hreflang="en" lang="en">EN</a>
+        <a class="lang-btn" href="./" aria-current="page">ES</a>
+      </div>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar entre modo oscuro y claro">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ===== Hero / Sobre mí ===== -->
+    <section class="hero" id="about" aria-labelledby="hero-name">
+      <div class="wrap hero-grid" id="top">
+        <div class="avatar" role="img" aria-label="Matias Cattaneo">
+          <img src="../assets/profile.jpg" alt="" onerror="this.remove()">
+        </div>
+        <div>
+          <h1 id="hero-name">Matias Cattaneo</h1>
+          <p class="role">Analytics Engineer · Snowflake | dbt | Power BI</p>
+          <p class="pitch">
+            Construyo la capa de datos sobre la que las empresas toman decisiones:
+            pipelines en Snowflake, modelos dbt y dashboards de BI en los que los
+            equipos de negocio realmente confían. Base de Ingeniería Industrial,
+            más de 5 años en agro, retail, banca, telecomunicaciones y manufactura.
+          </p>
+          <ul class="proof-bar">
+            <li>Certificado SnowPro Core</li>
+            <li>5 industrias, ownership de punta a punta</li>
+            <li>Inglés y español</li>
+          </ul>
+          <div class="hero-cta">
+            <button class="btn btn-primary" type="button" onclick="window.print()">Descargar CV (PDF)</button>
+            <a class="btn btn-secondary" href="#experience">Ver experiencia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <p class="section-sub">El stack de datos moderno, de la ingesta al dashboard.</p>
+        <div class="skills-grid">
+          <div class="card skill-card reveal">
+            <h3>Data Warehouse</h3>
+            <ul class="chips"><li>Snowflake</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Transformación de Datos</h3>
+            <ul class="chips"><li>dbt</li><li>SQL</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Ingesta de Datos</h3>
+            <ul class="chips"><li>Fivetran</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Business Intelligence</h3>
+            <ul class="chips"><li>Power BI</li><li>Tableau</li><li>Looker Studio</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Programación</h3>
+            <ul class="chips"><li>Python</li><li>Git</li></ul>
+          </div>
+          <div class="card skill-card reveal">
+            <h3>Gobierno y Calidad</h3>
+            <ul class="chips"><li>Alation</li><li>Microsoft Purview</li><li>Calidad de Datos</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Certificaciones ===== -->
+    <section id="certifications" aria-labelledby="cert-title">
+      <div class="wrap">
+        <h2 class="section-title" id="cert-title">Certificaciones</h2>
+        <div class="card cert-card reveal">
+          <div class="cert-badge" aria-hidden="true">❄</div>
+          <div>
+            <h3>SnowPro Core Certification</h3>
+            <p class="meta">Snowflake · Emitida en marzo de 2025</p>
+            <a class="cert-link" href="https://achieve.snowflake.com/28c1f5fc-b68b-4dea-9faf-e282e748a96b#acc.XBHFcNiZ" target="_blank" rel="noopener">Ver credencial →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Experiencia ===== -->
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="wrap">
+        <h2 class="section-title" id="exp-title">Experiencia Profesional</h2>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Data Engineer</h3>
+            <span class="dates">Septiembre 2025 – Actualidad</span>
+          </div>
+          <p class="org">IAgro · Agro</p>
+          <ul>
+            <li>Soy dueño de la plataforma de datos de punta a punta para múltiples clientes del agro: ingesta automatizada con Fivetran, warehouse en Snowflake, modelos dbt y dashboards en Power BI / Looker Studio que siguen KPIs de producción agrícola.</li>
+            <li>Construí asistentes de IA sobre Snowflake que responden preguntas en lenguaje natural sobre los datos de cada cliente, eliminando el cuello de botella del analista para consultas rutinarias.</li>
+            <li>Estandaricé los datos de referencia entre todos los clientes en dbt, eliminando inconsistencias y retrabajo entre reportes.</li>
+            <li>Administro roles, accesos y dimensionamiento de warehouses en Snowflake, manteniendo controlado el costo de cómputo a medida que se suman clientes.</li>
+            <li>Actúo como único punto de responsabilidad por cliente para calidad de datos, definición de KPIs y resolución de problemas en producción.</li>
+          </ul>
+          <p class="tags"><b>Herramientas:</b> Snowflake, dbt, Fivetran, Power BI, Looker Studio</p>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Consultor de Datos &amp; Analytics</h3>
+            <span class="dates">Septiembre 2023 – Agosto 2025</span>
+          </div>
+          <p class="org">Inisoft · Consultoría</p>
+          <div class="engagements">
+
+            <div class="engagement">
+              <h4>Analytics Engineer — Hakkoda (US Foods)</h4>
+              <p class="dates">Enero 2025 – Agosto 2025 · Retail, Distribución de Alimentos</p>
+              <ul>
+                <li>Construí pipelines dbt sobre Snowflake que motorizan procesos ELT repetibles para US Foods, distribuidor de alimentos del Fortune 500.</li>
+                <li>Creé dashboards en Tableau para análisis de negocio y validé los datos subyacentes con SQL en Snowflake.</li>
+                <li>Trabajé con equipos de negocio, IT y Gobierno de Datos para convertir requerimientos de analytics en activos de datos gobernados y reutilizables.</li>
+              </ul>
+              <p class="tags"><b>Herramientas:</b> Tableau, dbt, SQL, Snowflake, Git, Bitbucket</p>
+            </div>
+
+            <div class="engagement">
+              <h4>Business Analyst — Speedcast</h4>
+              <p class="dates">Enero 2024 – Enero 2025 · Telecomunicaciones</p>
+              <ul>
+                <li>Rediseñé procesos de datos maestros de clientes y productos, identificando oportunidades de automatización que eliminaron pasos manuales del alta de cuentas.</li>
+                <li>Evalué plataformas de MDM (IBM InfoSphere, Microsoft Purview, Profisee) y entregué la comparativa que fundamentó la decisión de herramienta.</li>
+                <li>Mapeé de punta a punta el proceso de alta de nuevos clientes, clarificando responsabilidades y pasos entre equipos.</li>
+                <li>Acompañé la integración de Dynamics 365 CRM con ServiceNow para acelerar la creación de órdenes.</li>
+              </ul>
+              <p class="tags"><b>Herramientas:</b> Power BI, Microsoft Purview, Azure DevOps, Miro, Dynamics 365</p>
+            </div>
+
+            <div class="engagement">
+              <h4>Data Governance Analyst — Hakkoda (US Foods)</h4>
+              <p class="dates">Septiembre 2023 – Enero 2024 · Retail, Distribución de Alimentos</p>
+              <ul>
+                <li>Validé métricas de reportes durante la migración de reportes legados a Snowflake, Tableau y Sigma, protegiendo la confianza en los números durante el cambio.</li>
+                <li>Introduje prácticas de gobierno de datos en equipos de negocio e IT; revisé políticas de datos y propuse mejoras que fueron adoptadas.</li>
+              </ul>
+              <p class="tags"><b>Herramientas:</b> SQL, Snowflake, Alation</p>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Data Governance Analyst</h3>
+            <span class="dates">Agosto 2022 – Agosto 2023</span>
+          </div>
+          <p class="org">Banco de Córdoba · Banca</p>
+          <ul>
+            <li>Modelé datos de tarjetas de crédito en SQL para el equipo de Prevención de Riesgos del banco.</li>
+            <li>Concilié datos entre el procesador de pagos (Prisma) y el sistema core del banco, evitando inconsistencias en los reportes.</li>
+            <li>Mantuve los reportes de Power BI precisos y disponibles curando los activos de datos del banco, perfilándolos con Python.</li>
+            <li>Impulsé la adopción de nuevas herramientas y procesos de datos en los equipos internos.</li>
+          </ul>
+          <p class="tags"><b>Herramientas:</b> Power BI, Microsoft SQL Server, Python, Oracle Database</p>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Analista de Datos (BI)</h3>
+            <span class="dates">Agosto 2020 – Julio 2022</span>
+          </div>
+          <p class="org">Plásticos Dise · Manufactura</p>
+          <ul>
+            <li>Reemplacé la captura manual en papel de datos de producción por Google Forms, mejorando la precisión y el acceso a los datos en toda la planta.</li>
+            <li>Construí dashboards de productividad con OEE y OKR en Power BI, dando a la dirección de planta visibilidad directa del rendimiento de las líneas.</li>
+            <li>Medí la entrega a tiempo (OTD) y propuse mejoras correctivas; gestioné el control y la planificación de inventario en SAP.</li>
+          </ul>
+          <p class="tags"><b>Herramientas:</b> Power BI, SAP</p>
+        </article>
+
+        <article class="card job reveal">
+          <div class="job-head">
+            <h3>Pasante de Ingeniería de Procesos</h3>
+            <span class="dates">Febrero 2019 – Julio 2020</span>
+          </div>
+          <p class="org">Plásticos Dise · Manufactura</p>
+          <ul>
+            <li>Reduje los tiempos de setup de máquinas aplicando el método SMED.</li>
+            <li>Mapeé flujos de valor (VSM) para encontrar y eliminar ineficiencias de proceso.</li>
+            <li>Estandaricé datos de producción y operaciones mediante normalización y guías de capacitación.</li>
+          </ul>
+          <p class="tags"><b>Herramientas:</b> Microsoft Office, Poka</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== Educación ===== -->
+    <section id="education" aria-labelledby="edu-title">
+      <div class="wrap">
+        <h2 class="section-title" id="edu-title">Educación</h2>
+        <div class="edu-grid">
+          <div class="card edu-card reveal">
+            <h3>Ingeniería Industrial</h3>
+            <p class="meta">Universidad Tecnológica Nacional — Facultad Regional Córdoba · Marzo 2014 – Febrero 2021</p>
+            <p class="note"><b>Proyecto Final:</b> Introducción al business intelligence y propuestas de mejora en una fábrica de envases plásticos.</p>
+          </div>
+          <div class="card edu-card reveal">
+            <h3>Diplomatura en Ciencia de Datos, Aprendizaje Automático y sus Aplicaciones</h3>
+            <p class="meta">Universidad Nacional de Córdoba — FAMAF · Febrero 2021 – Diciembre 2021</p>
+            <p class="note"><b>Proyecto Final:</b> Aplicación de Machine Learning a la predicción de demanda.</p>
+          </div>
+          <div class="card edu-card reveal">
+            <h3>Programa Ejecutivo de Business Intelligence</h3>
+            <p class="meta">Business School — Universidad Torcuato Di Tella · Octubre 2021 – Noviembre 2021</p>
+          </div>
+          <div class="card edu-card reveal">
+            <h3>Fundamentos de Bases de Datos (Oracle Database)</h3>
+            <p class="meta">UTN FRBA e-Learning Center · Agosto 2022 – Septiembre 2022</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contacto ===== -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 class="section-title" id="contact-title">Contacto</h2>
+        <p class="section-sub">Abierto a roles de Analytics Engineering y Data Engineering.</p>
+        <div class="card contact-card reveal">
+          <ul class="contact-links">
+            <li><a class="btn btn-primary" href="mailto:mcattaneo2195@gmail.com">mcattaneo2195@gmail.com</a></li>
+            <li><a class="btn btn-secondary" href="https://linkedin.com/in/matiascattaneo" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+          <p class="languages"><b>Español:</b> Nativo · <b>Inglés:</b> Full Professional Proficiency</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../app.js"></script>
+</body>
+</html>
