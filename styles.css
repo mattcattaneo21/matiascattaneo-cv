@@ -181,25 +181,26 @@ button:focus-visible {
 
 /* ---------- Hero / About ---------- */
 .hero { padding: 64px 0 56px; }
+.hero .wrap { max-width: 1140px; }
 .hero-art {
   flex: 0 0 auto;
-  width: 270px;
-  height: 270px;
-  margin-left: auto;
+  width: 360px;
+  height: 360px;
   color: var(--accent);
   opacity: 0.5;
   pointer-events: none;
 }
-@media (max-width: 980px) { .hero-art { display: none; } }
+@media (max-width: 1080px) { .hero-art { display: none; } }
 .hero-grid {
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: center;
+  gap: 48px;
 }
 .avatar {
   flex: 0 0 auto;
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   border: 3px solid var(--accent);
   background: var(--accent-soft);
@@ -208,7 +209,7 @@ button:focus-visible {
   display: grid;
   place-items: center;
   color: var(--ink);
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -236,6 +237,7 @@ button:focus-visible {
   max-width: 62ch;
   font-size: 1rem;
   color: var(--ink-soft);
+  text-wrap: pretty;
 }
 .proof-bar {
   display: flex;
@@ -441,16 +443,16 @@ section { padding: 40px 0; }
 /* ---------- Contact ---------- */
 .contact-lead {
   text-align: center;
-  font-size: 1.15rem;
-  color: var(--ink);
-  max-width: 46ch;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
   margin: 8px auto 28px;
 }
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  max-width: 620px;
+  max-width: 880px;
   margin: 0 auto;
 }
 .contact-tile {
@@ -542,6 +544,7 @@ html.anim .art-flow { animation: flow 1.4s linear infinite; }
 @media (max-width: 640px) {
   .hero { padding: 44px 0 40px; }
   .hero-grid { flex-direction: column; text-align: center; }
+  .avatar { width: 144px; height: 144px; font-size: 2.3rem; }
   .hero .pitch { margin-left: auto; margin-right: auto; }
   .proof-bar { justify-content: center; }
   .hero-cta { justify-content: center; }
