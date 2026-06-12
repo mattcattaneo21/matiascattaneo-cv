@@ -181,11 +181,12 @@ button:focus-visible {
 
 /* ---------- Hero / About ---------- */
 .hero { padding: 64px 0 56px; }
-.hero .wrap { max-width: 1140px; }
+.hero .wrap { max-width: 1180px; }
+.hero-copy { flex: 1; min-width: 0; }
 .hero-art {
   flex: 0 0 auto;
-  width: 360px;
-  height: 360px;
+  width: 330px;
+  height: 330px;
   color: var(--accent);
   opacity: 0.5;
   pointer-events: none;
@@ -195,7 +196,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 48px;
+  gap: 40px;
 }
 .avatar {
   flex: 0 0 auto;
@@ -234,7 +235,6 @@ button:focus-visible {
 }
 .hero .pitch {
   margin-top: 14px;
-  max-width: 62ch;
   font-size: 1rem;
   color: var(--ink-soft);
   text-wrap: pretty;
