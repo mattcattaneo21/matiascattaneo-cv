@@ -13,8 +13,7 @@ matiascattaneo-cv/
 │   └── index.html             # versión en español
 ├── styles.css                 # estilos compartidos (tokens claro/oscuro, print)
 ├── app.js                     # toggle de tema + animaciones
-├── CV_Matias_Cattaneo.pdf     # CV descargable en inglés
-├── CV_Matias_Cattaneo_ES.pdf  # CV descargable en español
+├── CV_Matias_Cattaneo.pdf     # CV descargable (por ahora ambos botones bajan este)
 ├── cv_en.md                   # fuente del contenido en inglés
 ├── cv_es.md                   # fuente del contenido en español
 ├── assets/
@@ -33,13 +32,14 @@ matiascattaneo-cv/
 - **Animaciones:** hero con entrada escalonada y secciones con scroll-reveal
   (IntersectionObserver). Se desactivan con `prefers-reduced-motion` y sin JS
   el contenido queda siempre visible.
-- **PDF:** los botones de descarga apuntan a `CV_Matias_Cattaneo.pdf` (EN) y
-  `CV_Matias_Cattaneo_ES.pdf` (ES). Se generan desde la hoja `@media print`
-  con Edge headless; al cambiar contenido hay que regenerarlos:
+- **PDF:** `CV_Matias_Cattaneo.pdf` se mantiene a mano (subir el archivo
+  exportado al root del repo). Por ahora los botones de descarga de las dos
+  páginas bajan ese mismo PDF; cuando exista la versión en español, agregar
+  `CV_Matias_Cattaneo_ES.pdf` y apuntar el botón de `/es/` ahí. Alternativa
+  para generarlos desde la hoja `@media print`:
 
   ```
   msedge --headless --no-pdf-header-footer --print-to-pdf="CV_Matias_Cattaneo.pdf" http://localhost:8000/
-  msedge --headless --no-pdf-header-footer --print-to-pdf="CV_Matias_Cattaneo_ES.pdf" http://localhost:8000/es/
   ```
 
 ## Fuente de verdad
