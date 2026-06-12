@@ -311,10 +311,10 @@ section { padding: 40px 0; }
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 14px;
 }
-.skill-card, .edu-card, .cert-card {
+.skill-card, .edu-card, .cert-card, .contact-tile {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.skill-card:hover, .edu-card:hover, .cert-card:hover {
+.skill-card:hover, .edu-card:hover, .cert-card:hover, .contact-tile:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lift);
 }
@@ -439,19 +439,52 @@ section { padding: 40px 0; }
 .edu-card .note b { color: var(--ink); font-weight: 600; }
 
 /* ---------- Contact ---------- */
-.contact-card {
+.contact-lead {
   text-align: center;
-  padding: 36px 24px;
+  font-size: 1.15rem;
+  color: var(--ink);
+  max-width: 46ch;
+  margin: 8px auto 28px;
 }
-.contact-links {
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.contact-tile {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 30px 22px;
+  text-align: center;
+  text-decoration: none;
+}
+.tile-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  margin-bottom: 8px;
+}
+.tile-label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.tile-value {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
 }
 .languages {
-  margin-top: 22px;
+  text-align: center;
+  margin-top: 24px;
   font-size: 0.85rem;
   color: var(--ink-soft);
 }
@@ -518,7 +551,7 @@ html.anim .art-flow { animation: flow 1.4s linear infinite; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn, .card, .nav-links a, .lang-btn, .theme-toggle, body { transition: none; }
-  .btn:hover, .skill-card:hover, .edu-card:hover, .cert-card:hover { transform: none; }
+  .btn:hover, .skill-card:hover, .edu-card:hover, .cert-card:hover, .contact-tile:hover { transform: none; }
 }
 
 /* ==========================================================
@@ -566,13 +599,14 @@ html.anim .art-flow { animation: flow 1.4s linear infinite; }
   .skill-card, .edu-card { border: 1px solid var(--line); padding: 10px 12px; }
   .job, .engagement, .skill-card, .edu-card, .cert-card { break-inside: avoid; }
   a { color: var(--ink); text-decoration: none; }
-  .cert-link::after,
-  .contact-links a::after {
+  .cert-link::after {
     content: " — " attr(href);
     font-size: 9pt;
     color: var(--ink-soft);
   }
-  .contact-links a[href^="mailto:"]::after { content: ""; }
-  .contact-card { text-align: left; padding: 0; }
-  .contact-links { justify-content: flex-start; }
+  .contact-lead { display: none; }
+  .contact-grid { max-width: none; }
+  .contact-tile { padding: 0; align-items: flex-start; text-align: left; }
+  .tile-icon { display: none; }
+  .languages { text-align: left; }
 }

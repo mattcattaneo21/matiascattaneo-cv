@@ -137,6 +137,7 @@ Credential: https://achieve.snowflake.com/28c1f5fc-b68b-4dea-9faf-e282e748a96b#a
 | Data Ingestion | Fivetran |
 | Business Intelligence | Power BI, Tableau, Looker Studio |
 | Programming | Python, Git |
+| AI Tools | Claude Code, Codex |
 | Governance & Quality | Alation, Microsoft Purview |
 
 ## Languages
