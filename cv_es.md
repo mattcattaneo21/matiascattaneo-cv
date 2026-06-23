@@ -36,7 +36,7 @@ Enero 2025 - Agosto 2025
 - Armé dashboards en Tableau para análisis de negocio y validé los datos de base con SQL en Snowflake.
 - Trabajé con equipos de negocio, IT y Gobierno de Datos para convertir necesidades de analytics en activos de datos gobernados y reutilizables.
 
-**Herramientas:** Tableau, dbt, SQL, Snowflake, Git, Bitbucket  
+**Herramientas:** Tableau, Sigma, dbt, SQL, Snowflake, Modelado Dimensional, Git, Bitbucket  
 **Industria:** Retail - Distribución de Alimentos (US Foods)
 
 #### Asignación a Cliente: Business Analyst | Speedcast

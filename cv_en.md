@@ -36,7 +36,7 @@ January 2025 - August 2025
 - Created Tableau dashboards for business analysis and validated the underlying data with SQL in Snowflake.
 - Partnered with business, IT, and Data Governance teams to turn analytics requirements into governed, reusable data assets.
 
-**Tools:** Tableau, dbt, SQL, Snowflake, Git, Bitbucket  
+**Tools:** Tableau, Sigma, dbt, SQL, Snowflake, Dimensional Modeling, Git, Bitbucket  
 **Field:** Retail - Food Distribution (US Foods)
 
 #### Client Assignment: Business Analyst | Speedcast
