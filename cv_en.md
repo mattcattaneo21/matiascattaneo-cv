@@ -18,7 +18,7 @@ September 2025 - Present
 - Own the data platform end to end for multiple agriculture clients: automated ingestion with Fivetran, Snowflake warehousing, dbt models, and Power BI / Looker Studio dashboards tracking farm-production KPIs.
 - Built AI assistants on Snowflake that answer plain-language questions over client data, removing the analyst bottleneck for routine queries.
 - Standardized reference data across all clients in dbt, eliminating cross-client report inconsistencies and rework.
-- Administer Snowflake roles, access, and warehouse sizing, keeping compute costs controlled as new clients onboard.
+- Manage Snowflake roles, access, and warehouse sizing to keep compute costs under control as new clients onboard.
 - Act as single point of accountability per client for data quality, KPI definitions, and production troubleshooting.
 
 **Tools:** Snowflake, dbt, Fivetran, Power BI, Looker Studio  
