@@ -32,7 +32,7 @@ Septiembre 2023 - Agosto 2025
 
 Enero 2025 - Agosto 2025
 
-- Construí pipelines con dbt sobre Snowflake para procesos ELT repetibles en US Foods, uno de los mayores distribuidores de alimentos de Estados Unidos.
+- Construí pipelines con dbt sobre Snowflake para procesos ELT repetibles en US Foods, uno de los mayores distribuidores de alimentos de Estados Unidos, y definí métricas consistentes en el Semantic Layer de dbt.
 - Armé dashboards en Tableau para análisis de negocio y validé los datos de base con SQL en Snowflake.
 - Trabajé con equipos de negocio, IT y Gobierno de Datos para convertir necesidades de analytics en activos de datos gobernados y reutilizables.
 

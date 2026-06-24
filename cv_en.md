@@ -32,7 +32,7 @@ September 2023 - August 2025
 
 January 2025 - August 2025
 
-- Built dbt pipelines on Snowflake powering repeatable ELT for US Foods, a Fortune 500 food distributor.
+- Built dbt pipelines on Snowflake powering repeatable ELT for US Foods, a Fortune 500 food distributor, and defined consistent metrics in the dbt Semantic Layer.
 - Created Tableau dashboards for business analysis and validated the underlying data with SQL in Snowflake.
 - Partnered with business, IT, and Data Governance teams to turn analytics requirements into governed, reusable data assets.
 
