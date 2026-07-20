@@ -16,7 +16,7 @@ Analytics Engineer con base en Ingeniería Industrial. Armo pipelines, modelos y
 Septiembre 2025 - Actualidad
 
 - Me encargo de punta a punta de la plataforma de datos de varios clientes del agro: ingesta automatizada con Fivetran, warehouse en Snowflake, modelos dbt y dashboards en Power BI y Looker Studio para seguir KPIs de producción agrícola.
-- Construí asistentes de IA sobre Snowflake que responden preguntas en lenguaje natural sobre los datos, para que los clientes no dependan de un analista en las consultas de rutina.
+- Construí asistentes de IA que responden preguntas en lenguaje natural sobre los datos, para que los clientes no dependan de un analista en las consultas de rutina.
 - Estandaricé los datos de referencia entre clientes en dbt, eliminando inconsistencias y retrabajo entre reportes.
 - Administro roles, accesos y tamaño de los warehouses en Snowflake, manteniendo el costo de cómputo bajo control a medida que entran clientes nuevos.
 - Soy el referente de datos de cada cliente: calidad de datos, definición de KPIs y soporte en producción.
