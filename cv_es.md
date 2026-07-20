@@ -135,7 +135,7 @@ Credencial: https://achieve.snowflake.com/28c1f5fc-b68b-4dea-9faf-e282e748a96b#a
 | Data Warehouse | Snowflake |
 | Transformación de Datos | dbt, SQL |
 | Ingesta de Datos | Fivetran |
-| Business Intelligence | Power BI, Tableau, Looker Studio |
+| Business Intelligence | Power BI, Tableau, Looker Studio, Sigma |
 | Programación | Python, Git |
 | Herramientas de IA | Claude Code, Codex |
 | Gobierno de Datos | Alation, Microsoft Purview |
